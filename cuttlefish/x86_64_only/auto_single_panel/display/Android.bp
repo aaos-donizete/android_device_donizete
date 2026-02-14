@@ -1,0 +1,5 @@
+prebuilt_etc_host {
+    name: "cvd_config_single_panel.json",
+    src: "config_single_panel.json",
+    sub_dir: "cvd_config"
+}

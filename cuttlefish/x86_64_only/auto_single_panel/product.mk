@@ -7,7 +7,8 @@ TARGET_BOARD_INFO_FILE := device/donizete/cuttlefish/x86_64_only/auto_single_pan
 
 PRODUCT_PACKAGES += \
 	donizete_remove_products \
-	donizete_sample_app
+	donizete_sample_app \
+	com.oem.sharedlib.resources
 
 PRODUCT_NAME := auto_single_panel
 PRODUCT_DEVICE := x86_64_only

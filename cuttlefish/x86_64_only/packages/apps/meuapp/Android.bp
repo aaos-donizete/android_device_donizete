@@ -1,0 +1,9 @@
+android_app {
+    name: "JuninhoApp",
+    certificate: "platform",
+    platform_apis: true,
+    system_ext_specific: true,
+    srcs: [
+        "MainActivity.kt"
+    ]
+}

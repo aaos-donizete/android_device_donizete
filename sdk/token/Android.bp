@@ -1,0 +1,49 @@
+android_app {
+    name: "com.oem.token-res",
+
+    use_resource_processor: false,
+    sdk_version: "core_platform",
+    certificate: "platform",
+
+    // Soong special-cases com.oem.doni.res to install this alongside
+    // the libraries at /system_ext/framework/com.oem.doni.res.apk.
+
+    aaptflags: [
+        // Framework doesn't need versioning since it IS the platform.
+        "--no-auto-version",
+
+        // Allow overlay to add resource
+        "--auto-add-overlay",
+
+        // Tell aapt to create "extending (non-application)" resource IDs,
+        // since these resources will be used by many apps.
+        "--allow-reserved-package-id",
+        // Use id 0x3f (one less than app id).
+        "--package-id",
+        "63",
+    ],
+
+    // Create package-export.apk, which other packages can use to get
+    // PRODUCT-agnostic resource data like IDs and type definitions.
+    export_package_resources: true,
+}
+
+java_defaults {
+    name: "oem-token-sdk-defaults",
+
+    srcs: [
+        ":com.oem.token-res{.aapt.srcjar}",
+    ],
+}
+
+java_library {
+    name: "com.oem.token.platform",
+    defaults: ["oem-token-sdk-defaults"],
+    installable: true,
+    sdk_version: "core_platform",
+
+    libs: [
+        "framework",
+        "services",
+    ],
+}

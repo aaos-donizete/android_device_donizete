@@ -1,0 +1,8 @@
+android_app {
+    name: "com.oem.sharedlib.resources",
+
+    sdk_version: "current",
+    certificate: "platform",
+
+    aaptflags: ["--shared-lib"],
+}
